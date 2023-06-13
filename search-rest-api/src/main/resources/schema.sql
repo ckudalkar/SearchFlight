@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS myflight;
+
+CREATE TABLE my_flight (
+  id LONG AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  flight_num VARCHAR(255) NOT NULL,
+  origin VARCHAR(255) NOT NULL,
+  destination VARCHAR(255) NOT NULL,
+  departure_time TIMESTAMP NOT NULL,
+  arrival_time TIMESTAMP NOT NULL,
+  price INT NOT NULL
+);
