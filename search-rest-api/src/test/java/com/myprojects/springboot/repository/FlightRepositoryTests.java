@@ -1,6 +1,6 @@
 package com.myprojects.springboot.repository;
 
-import com.myprojects.springboot.entity.MyFlight;
+import com.myprojects.springboot.entity.Flight;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class FlightRepositoryTests {
     @DisplayName("JUnit Test to get Flight List between given origin & Destination")
     @Test
     void givenOriginAndDestination_whenFindInfo_thenFlightList() {
-        List<MyFlight> flightList = fr.findByOriginAndDestination("BOM", "DEL");
+        List<Flight> flightList = fr.findByOriginAndDestination("BOM", "DEL");
         assertThat(flightList).isNotEmpty()
                 .allMatch(f -> "BOM".equals(f.getOrigin()) && "DEL".equals(f.getDestination()));
         assertThat(flightList.size()).isEqualTo(4);

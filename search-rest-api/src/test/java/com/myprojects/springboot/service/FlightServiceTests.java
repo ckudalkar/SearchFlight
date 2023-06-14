@@ -1,10 +1,10 @@
 package com.myprojects.springboot.service;
 
 import com.myprojects.springboot.dto.FlightDto;
-import com.myprojects.springboot.entity.MyFlight;
+import com.myprojects.springboot.entity.Flight;
 import com.myprojects.springboot.exception.FlightInfoNotFoundException;
 import com.myprojects.springboot.repository.FlightRepository;
-import com.myprojects.springboot.service.impl.MyFlightServiceImpl;
+import com.myprojects.springboot.service.impl.FlightServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,9 +30,9 @@ public class FlightServiceTests {
     @Mock
     private FlightRepository fr;
     @InjectMocks
-    private MyFlightServiceImpl fs;
+    private FlightServiceImpl fs;
 
-    private List<MyFlight> myFlightList;
+    private List<Flight> myFlightList;
 
     @BeforeEach
     public void setup(){
@@ -67,7 +67,7 @@ public class FlightServiceTests {
         //Arrange the Data
         myFlightList = myFlightList.stream()
                 .filter(f -> "BOM".equals(f.getOrigin()) && "DEL".equals(f.getDestination()))
-                .sorted(Comparator.comparing(MyFlight::getPrice))
+                .sorted(Comparator.comparing(Flight::getPrice))
                 .collect(Collectors.toList());
 
         //Add the behaviour
@@ -90,7 +90,7 @@ public class FlightServiceTests {
         //Arrange the Data
         myFlightList = myFlightList.stream()
                 .filter(f -> "BOM".equals(f.getOrigin()) && "DEL".equals(f.getDestination()))
-                .sorted(Comparator.comparing(MyFlight::getPrice).reversed())
+                .sorted(Comparator.comparing(Flight::getPrice).reversed())
                 .collect(Collectors.toList());
 
         //Add the behaviour
@@ -172,9 +172,9 @@ public class FlightServiceTests {
     }
 
 
-    private List<MyFlight> createTestListFlightData() {
-        List<MyFlight> flightList = new ArrayList<MyFlight>();
-        MyFlight flight = new MyFlight();
+    private List<Flight> createTestListFlightData() {
+        List<Flight> flightList = new ArrayList<Flight>();
+        Flight flight = new Flight();
         flight.setId(1L);
         flight.setFlightNum ("F101");
         flight.setOrigin("BOM");
@@ -183,7 +183,7 @@ public class FlightServiceTests {
         flight.setDepartureTime(LocalDateTime.of(2023, 6, 12, 21, 30));
         flight.setPrice(80);
         flightList.add(flight);
-        flight = new MyFlight();
+        flight = new Flight();
         flight.setId(2L);
         flight.setFlightNum("G101");
         flight.setOrigin("BOM");
@@ -192,7 +192,7 @@ public class FlightServiceTests {
         flight.setDepartureTime(LocalDateTime.of(2023, 6, 12, 19, 30));
         flight.setPrice(100);
         flightList.add(flight);
-        flight = new MyFlight();
+        flight = new Flight();
         flight.setId(3L);
         flight.setFlightNum("F201");
         flight.setOrigin("BOM");
@@ -201,7 +201,7 @@ public class FlightServiceTests {
         flight.setDepartureTime(LocalDateTime.of(2023, 6, 12, 22, 30));
         flight.setPrice(80);
         flightList.add(flight);
-        flight = new MyFlight();
+        flight = new Flight();
         flight.setId(4L);
         flight.setFlightNum("G01");
         flight.setOrigin("BOM");
@@ -210,7 +210,7 @@ public class FlightServiceTests {
         flight.setDepartureTime(LocalDateTime.of(2023, 6, 12, 21, 30));
         flight.setPrice(80);
         flightList.add(flight);
-        flight = new MyFlight();
+        flight = new Flight();
         flight.setId(5L);
         flight.setFlightNum("E201");
         flight.setOrigin("DEL");

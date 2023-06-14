@@ -10,16 +10,16 @@ import java.util.Optional;
 
 /**
  * Controller that will help get the flight Information for Origin - Destination
- * MyFlightController
+ * FlightController
  *
  */
 
 @RestController
 @RequestMapping("/api/v1/Flights")
-public class MyFlightController {
+public class FlightController {
     private FlightService fs;
 
-    public MyFlightController(FlightService fs) {
+    public FlightController(FlightService fs) {
         this.fs = fs;
     }
 
@@ -43,10 +43,10 @@ public class MyFlightController {
     @GetMapping()
     public ResponseEntity<List<FlightDto>> searchmyflightByToAndFro(@RequestParam String origin,
                                                                    @RequestParam String dest,
-                                                                   @RequestParam Optional<String> price,
-                                                                   @RequestParam Optional<String> duration){
+                                                                   @RequestParam Optional<String> sortByPrice,
+                                                                   @RequestParam Optional<String> sortByDuration){
 
-        List<FlightDto> Flights = fs.getFlights(origin, dest, price, duration);
+        List<FlightDto> Flights = fs.getFlights(origin, dest, sortByPrice, sortByDuration);
         return ResponseEntity.ok(Flights);
     }
 }
